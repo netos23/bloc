@@ -58,7 +58,9 @@ abstract class BlocBase<State>
   }
 
   // ignore: deprecated_member_use_from_same_package
-  final _blocObserver = BlocOverrides.current?.blocObserver ?? Bloc.observer;
+  final _deprecatedObserver = BlocOverrides.current?.blocObserver;
+
+  BlocObserver get _blocObserver => _deprecatedObserver ?? Bloc.observer;
 
   late final _stateController = StreamController<State>.broadcast();
 
